@@ -1,6 +1,6 @@
 # Bootstrap Python Backend
 
-A template repository for backend Python REST API server with a database.
+A template repository for backend Python REST API server with a database
 
 Stack: Flask, Gunicorn WSGI, Postgres DB, Docker
 
