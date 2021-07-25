@@ -1,0 +1,49 @@
+version: '2.1'
+
+services:
+  backend-api:
+    container_name: backend-api
+    image: backend-api:${VERSION}
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+    networks:
+      - localnet
+    restart: unless-stopped
+
+  postgres-db:
+    container_name: postgres-db
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ${DATA_DIR}/pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - localnet
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  postgres-admin:
+    container_name: postgres-admin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin@postgres.in
+      PGADMIN_DEFAULT_PASSWORD: password
+    ports:
+      - "5433:80"
+    networks:
+      - localnet
+    restart: unless-stopped
+
+networks:
+  localnet:
+    driver: bridge

@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.swp
+*.egg-info
+venv
+dist/
+build/
+.idea
+.DS_Store
+.venv
+.coverage
+.pytest_cache
+.eggs
+postgres_data
