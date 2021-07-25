@@ -2,7 +2,7 @@
 
 A template repository for backend Python REST API server with a database
 
-Stack: Flask, Gunicorn WSGI, Postgres DB, Docker
+Stack: Flask Server, Gunicorn WSGI, Postgres DB, Docker, Shell
 
 ## Prerequisites
 
