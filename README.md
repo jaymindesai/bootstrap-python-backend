@@ -13,13 +13,13 @@ Stack: Flask, Gunicorn WSGI, Postgres DB, Docker
 
 [Setup and activate a virtual environment](https://docs.python.org/3/tutorial/venv.html) (optional but recommended)
 
-```shell
+```shell script
 pip install -r requirements.txt
 ```
 
 ## Testing
 
-```shell
+```shell script
 # Run unit tests with PyTest
 python setup.py test
 ```
@@ -27,7 +27,7 @@ python setup.py test
 ## Running
 
 ### Running Flask Server Locally
-```shell
+```shell script
 # Install application
 python setup.py install
 
@@ -41,12 +41,12 @@ To start server locally with custom settings:
   - Worker timeout
   - Gunicorn log level
 
-```shell
+```shell script
 sh scripts/start_server.sh workers=3 threads=2 timeout=30 log-level=DEBUG
 ```
 
 ### Running Flask Server inside Docker
-```shell
+```shell script
 # Build docker image
 python setup.py build_docker
 
@@ -66,7 +66,7 @@ Runs the entire setup using `docker-compose`:
 Make sure you have `DATA_DIR` environment variable set. This directory will be used as persistent volume mount 
 for Postgres database.
 
-```shell
+```shell script
 # Start all services (will always create new backend-api image)
 sh scripts/run_all.sh
 
@@ -82,7 +82,7 @@ console will be available on `http://localhost:5433` and API server will be avai
 
 ### Endpoints
 
-```shell
+```shell script
 # Health check
 curl localhost:8000/health
 ```
