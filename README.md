@@ -87,7 +87,7 @@ console will be available on `http://localhost:5433` and API server will be avai
 curl localhost:8000/health
 
 # Sample POST endpoint
-curl http://localhost:8000/postendpoint -X POST --data '{"param": "value"}' -H 'Content-Type: application/json'
+curl -X POST http://localhost:8000/postendpoint -H 'Content-Type: application/json' -d '{"param": "value"}'
 ```
 
 ### Kubernetes
