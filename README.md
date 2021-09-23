@@ -85,4 +85,18 @@ console will be available on `http://localhost:5433` and API server will be avai
 ```shell script
 # Health check
 curl localhost:8000/health
+
+# Sample POST endpoint
+curl http://localhost:8000/postendpoint -X POST --data '{"param": "value"}' -H 'Content-Type: application/json'
+```
+
+### Kubernetes
+
+To run the app on a Kubernetes cluster:
+- Install kubernetes-cli (`kubectl`)
+- Build and push the docker image to a registry accessible on the cluster
+- Replace the placeholders in the deployment files under [kubernetes](./kubernetes) directory and run the following commands
+```shell
+kubectl apply -f kubernetes/deployment.yaml
+kubectl apply -f kubernetes/service.yaml
 ```
