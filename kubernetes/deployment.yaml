@@ -1,0 +1,42 @@
+# Update <CONTAINER_REGISTRY>, <NAMESPACE>, environment variables and image tag as required
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-api
+  labels:
+    app: backend-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-api
+  template:
+    metadata:
+      labels:
+        app: backend-api
+    spec:
+      containers:
+      - name: backend-api
+        image: <CONTAINER_REGISTRY>/<NAMESPACE>/backend-api:0.0.1
+        ports:
+        - containerPort: 8000
+        imagePullPolicy: Always
+        readinessProbe:
+          httpGet:
+            scheme: HTTP
+            path: /health
+            port: 8000
+          initialDelaySeconds: 3
+          periodSeconds: 30
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            scheme: HTTP
+            path: /health
+            port: 8000
+          initialDelaySeconds: 3
+          periodSeconds: 30
+          timeoutSeconds: 5
+        env:
+          - name: ENV
+            value: dev

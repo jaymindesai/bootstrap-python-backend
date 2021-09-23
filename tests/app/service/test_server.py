@@ -15,3 +15,10 @@ class TestServer:
         response = client.get('/health')
         assert response.status_code == 200
         assert response.get_json()['message'] == "Running"
+
+    def test_post_endpoint(self, client):
+        payload = {"alias": "OOJ"}
+        response = client.post('/postendpoint', json=payload)
+        assert response.status_code == 200
+        assert response.get_json()['message'] == "Received payload attached in the response"
+        assert response.get_json()['payload'] == payload

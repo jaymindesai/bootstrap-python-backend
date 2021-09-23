@@ -1,0 +1,15 @@
+# Update <NODEPORT> or comment it out as required
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-api
+  labels:
+    app: backend-api
+spec:
+  type: NodePort  # https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
+  selector:
+    app: backend-api
+  ports:
+    - port: 8000
+      targetPort: 8000
+      nodePort: <NODEPORT>  # Comment it out if not using a custom Node port
